@@ -10,6 +10,7 @@ WRK_PATH="$( pwd )"
 
 # LOAD LIBRARIES
 source $LIB_PATH/functions.sh
+source $LIB_PATH/openssl.sh
 source $LIB_PATH/help.sh
 
 if [[ "$1" == "csr" ]];
