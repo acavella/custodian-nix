@@ -12,10 +12,10 @@ WRK_PATH="$( pwd )"
 source $LIB_PATH/functions.sh
 source $LIB_PATH/help.sh
 
-if [[ "$1" == "CSR" ]];
+if [[ "$1" == "csr" ]];
 then
 	generate_csr
-elif [[ "$1" == "--help" ]];
+elif [[ "$1" == "help" ]];
 then
 	display_help
 elif [[ -z $1 ]];
