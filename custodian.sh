@@ -8,8 +8,10 @@ BIN_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 LIB_PATH="$BIN_PATH/lib/"
 WRK_PATH="$( pwd )"
 
-# WORKING VARIABLES
+# INPUT VARIABLES
 arg1="$2"
+arg2="$3"
+arg3="$4"
 
 # LOAD LIBRARIES
 source $LIB_PATH/functions.sh
