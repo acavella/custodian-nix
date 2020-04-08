@@ -15,3 +15,14 @@ generate_csr () {
 	/usr/bin/openssl req -new -config /tmp/$CN.conf -sha384 -key $CN.key -out $CN.csr
 	rm -f /tmp/$CN.conf
 }
+
+bulk_csr () {
+	# Assign source file to first argument
+	input="$arg1"
+
+	# Generate private key and signing request for each line of input
+	while IFS= read -r line
+	do
+		echo "CN=$line"
+	done < "$input"
+}

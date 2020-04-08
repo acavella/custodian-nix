@@ -18,13 +18,12 @@ source $LIB_PATH/functions.sh
 source $LIB_PATH/openssl.sh
 source $LIB_PATH/help.sh
 
-if [[ "$1" == "csr" ]];
-then
+if [[ "$1" == "csr" ]]; then
 	generate_csr
-elif [[ "$1" == "help" ]];
-then
+elif [[ "$1" == "bulkcsr" ]]; then
+	bulk_csr
+elif [[ "$1" == "help" ]]; then
 	display_help
-elif [[ -z $1 ]];
-then 
+elif [[ -z $1 ]]; then 
 	display_help
 fi
