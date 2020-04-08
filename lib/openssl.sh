@@ -23,6 +23,11 @@ bulk_csr () {
 	# Generate private key and signing request for each line of input
 	while IFS= read -r line
 	do
-		echo "CN=$line"
+		echo "Generating ECDSA private key for $line"
+        	cp $BIN_PATH/conf/openssl.conf /tmp/$line.conf
+        	echo "CN=$line" >> /tmp/$line.conf
+        	/usr/bin/openssl ecparam -name secp384r1 -genkey -noout -out $line.key
+        	/usr/bin/openssl req -new -config /tmp/$line.conf -sha384 -key $line.key -out $line.csr
+        	rm -f /tmp/$line.conf
 	done < "$input"
 }
