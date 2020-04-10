@@ -31,3 +31,21 @@ bulk_csr () {
         	rm -f /tmp/$line.conf
 	done < "$input"
 }
+
+make_pkcs12 () {
+	# Assign args to variables
+	pub="$arg1"
+	priv="$arg2"
+	p12name=$(echo "$pub" | cut -f 1 -d '.')
+
+	# Generate PKCS12 from PEM and Key
+	/usr/bin/openssl pkcs12 -export -inkey $priv -in $pub -out $p12name -nodes
+}
+
+split_pkcs12 () {
+	# Assign args to variables
+	p12="$arg1"
+	pw="$arg2"
+
+	# Generate PEM and Key from PKCS12
+
