@@ -13,5 +13,9 @@ add_user () {
 		useradd -m -p $pass $user
 		[ $? -eq 0 ] && echo "User has been added!" || echo "Failed to add user!"
 	fi
-}	
+}
+inactive_accounts () {
+	# Assign variables
+
+	# 
 
