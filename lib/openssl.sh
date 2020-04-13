@@ -36,16 +36,21 @@ make_pkcs12 () {
 	# Assign args to variables
 	pub="$arg1"
 	priv="$arg2"
-	p12name=$(echo "$pub" | cut -f 1 -d '.')
-
+	f="$(basename -- $pub)"
+	fn=$(echo "$pub" | cut -f 1 -d '.')
+	
 	# Generate PKCS12 from PEM and Key
-	/usr/bin/openssl pkcs12 -export -inkey $priv -in $pub -out $p12name -nodes
+	/usr/bin/openssl pkcs12 -export -inkey $priv -in $pub -out ${fn}.pfx -nodes
 }
 
 split_pkcs12 () {
 	# Assign args to variables
 	p12="$arg1"
 	pw="$arg2"
+	f="$(basename -- $p12)"
+	fn=$(echo "$f" | cut -f 1 -d '.')
 
 	# Generate PEM and Key from PKCS12
-
+	/usr/bin/openssl pkcs12 -in $p12 -nokeys -out ${fn}.pem -passin pass:${pw}
+	/usr/bin/openssl pkcs12 -in $p12 -nocerts -nodes -out ${fn}.key -passin pass:${pw}
+}

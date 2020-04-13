@@ -22,6 +22,10 @@ if [[ "$1" == "csr" ]]; then
 	generate_csr
 elif [[ "$1" == "bulkcsr" ]]; then
 	bulk_csr
+elif [[ "$1" == "joinp12" ]]; then
+        make_pkcs12
+elif [[ "$1" == "splitp12" ]]; then
+        split_pkcs12
 elif [[ "$1" == "help" ]]; then
 	display_help
 elif [[ -z $1 ]]; then 
