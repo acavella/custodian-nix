@@ -16,6 +16,7 @@ arg3="$4"
 # LOAD LIBRARIES
 source $LIB_PATH/functions.sh
 source $LIB_PATH/openssl.sh
+source $LIB_PATH/accounts.sh
 source $LIB_PATH/help.sh
 
 if [[ "$1" == "csr" ]]; then
@@ -26,6 +27,8 @@ elif [[ "$1" == "joinp12" ]]; then
         make_pkcs12
 elif [[ "$1" == "splitp12" ]]; then
         split_pkcs12
+elif [[ "$1" == "adduser" ]]; then
+	add_user
 elif [[ "$1" == "help" ]]; then
 	display_help
 elif [[ -z $1 ]]; then 
